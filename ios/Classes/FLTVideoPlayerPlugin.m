@@ -599,8 +599,8 @@ NS_INLINE UIViewController *rootViewController(void) {
 }
 
 - (void)initialize:(FlutterError *__autoreleasing *)error {
-  // Allow audio playback when the Ring/Silent switch is set to silent
-  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+  // Allow audio session to respect silent mode
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategorySoloAmbient error:nil];
 
   [self.playersByTextureId
       enumerateKeysAndObjectsUsingBlock:^(NSNumber *textureId, FLTVideoPlayer *player, BOOL *stop) {
